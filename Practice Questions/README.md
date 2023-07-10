@@ -21,7 +21,15 @@ SELECT cptgrouping, COUNT(DISTINCT(cptcode)) AS CountOfCptCodes
 <br> GROUP BY cptgrouping
 <br> ORDER BY 2 DESC;
 
+### How many providers have submitted a Medicare insurance claims?
 
+SELECT COUNT(DISTINCT(providernpi)) AS countofproviders
+<br>FROM facttable 
+<br>INNER JOIN dimphysician
+<br>ON dimphysician.dimphysicianpk = facttable.dimphysicianpk
+<br>INNER JOIN dimpayer
+<br>ON dimpayer.dimpayerpk = facttable.dimpayerpk
+<br>WHERE payername = 'Medicare';
 
 
 

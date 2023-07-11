@@ -32,6 +32,14 @@ SELECT COUNT(DISTINCT(providernpi)) AS countofproviders
 <br>ON dimpayer.dimpayerpk = facttable.dimpayerpk
 <br>WHERE payername = 'Medicare';
 
+### Calculate the gross collection rate for each location name - see below; GCR = payments divided gross charge. Which locationname has the highest GCR? 
+
+SELECT locationname, 100 *(-SUM(payment)/ sum(grosscharge)) AS GCR_Percent
+<br> FROM facttable
+<br> INNER JOIN dimlocation
+<br> ON dimlocation.dimlocationpk = facttable.dimlocationpk
+<br> GROUP BY  locationname
+<br> ORDER BY 2 DESC;
 
 
 

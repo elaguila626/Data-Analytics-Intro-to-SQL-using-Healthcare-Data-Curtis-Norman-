@@ -42,6 +42,16 @@ SELECT locationname, 100 *(-SUM(payment)/ sum(grosscharge)) AS GCR_Percent
 <br> ORDER BY 2 DESC;
 
 ### How many CptCodes have more than 100 units?
+-- Answer: 29 
+
+SELECT COUNT(*) AS cptwithgreaterthanhundredunits
+<br> FROM(
+<br>	SELECT cptcode, SUM(cptunits)
+<br>	FROM facttable 
+<br>	INNER JOIN dimcptcode
+<br>	ON dimcptcode.dimcptcodepk = facttable.dimcptcodepk
+<br>	GROUP BY cptcode
+<br>	HAVING SUM(cptunits) > 100) AS a; 
 
 
 

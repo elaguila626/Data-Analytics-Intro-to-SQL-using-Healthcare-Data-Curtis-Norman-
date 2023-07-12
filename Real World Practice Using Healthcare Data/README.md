@@ -41,6 +41,7 @@ SELECT locationname, 100 *(-SUM(payment)/ sum(grosscharge)) AS GCR_Percent
 <br> GROUP BY  locationname
 <br> ORDER BY 2 DESC;
 
+### How many CptCodes have more than 100 units?
 
 
 

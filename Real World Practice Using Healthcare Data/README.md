@@ -64,6 +64,7 @@ SELECT providerspecialty, monthperiod, monthyear,  -SUM(payment) AS payments
 <br>GROUP BY providerspecialty, monthperiod, monthyear
 <br>ORDER BY monthperiod;
 
+### How many Cpt Units by DiagnosisCodeGroup are assigned to a "J code" diagnosis? 
 
 
 

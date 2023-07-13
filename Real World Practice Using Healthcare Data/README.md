@@ -76,4 +76,13 @@ SELECT diagnosiscodegroup, SUM(cptunits) as totalunits
 
 ### You've been asked to put together a report that details patient demographics. The report should group patients into three buckets - under 18, between 18-65, and over 65. 
 
+SELECT firstname || ' ' || lastname AS Name, email, patientage,
+<br> CASE 
+<br> WHEN (patientage < 18) THEN '< 18'
+<br> WHEN (patientage BETWEEN 18 AND 65) THEN '18-65'
+<br> WHEN (patientage > 65) THEN '> 65'
+<br> ELSE null 
+<br> END AS Patientagebucket,
+<br> city || ' ' || state AS Cityandstate
+<br> FROM dimpatient;
 

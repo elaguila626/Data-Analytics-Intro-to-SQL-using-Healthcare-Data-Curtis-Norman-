@@ -54,7 +54,7 @@ SELECT COUNT(*) AS cptwithgreaterthanhundredunits
 <br>	HAVING SUM(cptunits) > 100) AS a; 
 
 ### Find the physician specialty that has received the highest amount of payments. Then show the payments by month for this group of physicians. 
-SELECT providerspecialty, monthperiod, monthyear,  -SUM(payment) AS totalpayments
+SELECT providerspecialty, monthperiod, monthyear,  -SUM(payment) AS payments
 <br>FROM facttable
 <br>INNER JOIN dimdate
 <br>ON dimdate.dimdatepostpk = facttable.dimdatepostpk

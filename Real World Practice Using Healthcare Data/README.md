@@ -66,6 +66,13 @@ SELECT providerspecialty, monthperiod, monthyear,  -SUM(payment) AS payments
 
 ### How many Cpt Units by DiagnosisCodeGroup are assigned to a "J code" diagnosis? 
 
+SELECT diagnosiscodegroup, SUM(cptunits) as totalunits
+<br>FROM facttable
+<br>INNER JOIN dimdiagnosiscode
+<br>ON dimdiagnosiscode.dimdiagnosiscodepk = facttable.dimdiagnosiscodepk
+<br>WHERE diagnosiscode ILIKE '%j%'
+<br>GROUP BY diagnosiscodegroup
+<br>ORDER BY totalunits;
 
 
 

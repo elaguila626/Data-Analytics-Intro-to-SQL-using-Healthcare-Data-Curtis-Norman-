@@ -1,4 +1,4 @@
-# Healthcare Data SQL Practice Questions
+# Healthcare Data SQL Practice Questions 
 
 ### How many rows of data are in the FactTable that include a Gross Charge greater than $100? 
 -- Answer: 5513
@@ -85,4 +85,23 @@ SELECT firstname || ' ' || lastname AS Name, email, patientage,
 <br> END AS Patientagebucket,
 <br> city || ' ' || state AS Cityandstate
 <br> FROM dimpatient;
+
+### How many dollars have been written off (adjustments) due to credentialing (adjustment reason)? Which location has the highest number of credentialing adjustments? How many physicians at this location have been impacted by credentialing adjustments? What does this mean?
+
+SELECT locationname, COUNT(DISTINCT(providernpi)) AS physiciansimpacted, - SUM(adjustment) AS totaladjustment 
+<br> FROM facttable
+<br> INNER JOIN dimtransaction
+<br>ON dimtransaction.dimtransactionpk = facttable.dimtransactionpk
+<br> INNER JOIN dimlocation
+<br> ON dimlocation.dimlocationpk = facttable.dimlocationpk
+<br> INNER JOIN dimphysician
+<br>ON dimphysician.dimphysicianpk = facttable.dimphysicianpk
+<br>WHERE transactiontype = 'Adjustment' AND  adjustmentreason = 'Credentialing'
+<br>GROUP BY locationname;
+
+-- What does this mean? Based on the data there are a total of 30 physicians at 'Anglestone Community Hospital' that are not credentialed and allowing a total of $2106.79 to be written off. 
+
+
+
+
 

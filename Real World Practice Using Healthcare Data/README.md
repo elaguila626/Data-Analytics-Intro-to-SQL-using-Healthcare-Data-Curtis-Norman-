@@ -74,5 +74,6 @@ SELECT diagnosiscodegroup, SUM(cptunits) as totalunits
 <br>GROUP BY diagnosiscodegroup
 <br>ORDER BY totalunits;
 
+### You've been asked to put together a report that details patient demographics. The report should group patients into three buckets - under 18, between 18-65, and over 65. 
 
 

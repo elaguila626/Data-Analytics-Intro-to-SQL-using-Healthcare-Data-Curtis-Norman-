@@ -53,6 +53,10 @@ SELECT COUNT(*) AS cptwithgreaterthanhundredunits
 <br>	GROUP BY cptcode
 <br>	HAVING SUM(cptunits) > 100) AS a; 
 
+### Find the physician specialty that has received the highest amount of payments. Then show the payments by month for this group of physicians. 
+
+
+
 
 
 

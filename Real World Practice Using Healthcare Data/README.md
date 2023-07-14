@@ -107,7 +107,7 @@ SELECT patientgender, COUNT(DISTINCT(dimpatient.patientnumber)) AS totalpatients
 <br> AVG(patientage) AS avgpatientage
 <br>FROM facttable
 <br>INNER JOIN dimlocation
-<b>ON dimlocation.dimlocationpk = facttable.dimlocationpk
+<br>ON dimlocation.dimlocationpk = facttable.dimlocationpk
 <br>INNER JOIN dimpatient
 <br>ON dimpatient.dimpatientpk = facttable.impatient
 <br>INNER JOIN dimdiagnosiscode

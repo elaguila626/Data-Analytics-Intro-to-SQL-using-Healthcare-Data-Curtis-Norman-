@@ -116,7 +116,16 @@ SELECT patientgender, COUNT(DISTINCT(dimpatient.patientnumber)) AS totalpatients
 <br>locationname ILIKE '%Big Heart Community Hospital%'
 <br>GROUP BY patientgender;
 
+### W### There are a two visit types that you have been asked to compare (use CptDesc).  Office outpateint visit  est vs new. Show each Cpt Code, Cpt desc, and the associated Cpt units. What is the charge per Cpt Units? What does this mean?
 
+SELECT cptcode, cptdesc AS cptoutpatient, 
+<br>SUM(cptunits) AS cptunits, ROUND(SUM(grosscharge)/SUM(cptunits),2) AS chargeperunit
+<br>FROM facttable
+<br>INNER JOIN dimcptcode
+<br>ON dimcptcode.dimcptcodepk = facttable.dimcptcodepk
+<br>WHERE cptdesc ILIKE '%outpatient%est%' OR cptdesc ILIKE '%outpatient%new%'
+<br>GROUP BY cptcode, cptdesc
+<br>ORDER BY cptunits;
 
 
 

@@ -109,7 +109,7 @@ SELECT patientgender, COUNT(DISTINCT(dimpatient.patientnumber)) AS totalpatients
 <br>INNER JOIN dimlocation
 <b>ON dimlocation.dimlocationpk = facttable.dimlocationpk
 <br>INNER JOIN dimpatient
-<br>ON dimpatient.dimpatientpk = facttable.dimpatientpk
+<br>ON dimpatient.dimpatientpk = facttable.impatient
 <br>INNER JOIN dimdiagnosiscode
 <br>ON dimdiagnosiscode.dimdiagnosiscodepk = facttable.dimdiagnosiscodepk
 <br>WHERE diagnosiscodedescription ILIKE '%type 2%' AND

@@ -1,6 +1,6 @@
 # Healthcare Data SQL Practice Questions 
 
-### How many rows of data are in the FactTable that include a Gross Charge greater than $100? 
+### 1. How many rows of data are in the FactTable that include a Gross Charge greater than $100? 
 #### Query
 SELECT count(grosscharge) AS CountOfRows 
 <br>FROM facttable
@@ -8,14 +8,14 @@ SELECT count(grosscharge) AS CountOfRows
 #### Output
 -- 5513
 
-### How many unique patients exist in the Healthcare_DB?
+### 2. How many unique patients exist in the Healthcare_DB?
 #### Query
 SELECT COUNT(DISTINCT(patientnumber)) AS NumberOfUniquePatients 
 <br>FROM dimpatient;
 #### Output
 -- 4962
 
-### How many CptCodes are in each CptGrouping?
+### 3. How many CptCodes are in each CptGrouping?
 #### Query
 SELECT cptgrouping, COUNT(DISTINCT(cptcode)) AS CountOfCptCodes
 <br> FROM dimcptcode
@@ -25,7 +25,7 @@ SELECT cptgrouping, COUNT(DISTINCT(cptcode)) AS CountOfCptCodes
 #### Output
 <img src="countofcptcodes.png" alt="countcpt" style="width:300px;height:228px;">
 
-### How many providers have submitted a Medicare insurance claims?
+### 4. How many providers have submitted a Medicare insurance claims?
 #### Query
 SELECT COUNT(DISTINCT(providernpi)) AS countofproviders
 <br>FROM facttable 
@@ -38,7 +38,7 @@ SELECT COUNT(DISTINCT(providernpi)) AS countofproviders
 #### Output
 -- 682
 
-### Calculate the gross collection rate for each location name - see below; GCR = payments divided gross charge. Which locationname has the highest GCR? 
+### 5. Calculate the gross collection rate for each location name - see below; GCR = payments divided gross charge. Which locationname has the highest GCR? 
 #### Query
 SELECT locationname, 100 *(-SUM(payment)/ sum(grosscharge)) AS GCR_Percent
 <br> FROM facttable
@@ -49,7 +49,7 @@ SELECT locationname, 100 *(-SUM(payment)/ sum(grosscharge)) AS GCR_Percent
 #### Output
 <img src="gcrpercent.png" alt="gcrperc" style="width:300px;height:228px;">
 
-### How many CptCodes have more than 100 units?
+### 6. How many CptCodes have more than 100 units?
 #### Query
 SELECT COUNT(*) AS cptwithgreaterthanhundredunits
 <br> FROM(
@@ -62,7 +62,7 @@ SELECT COUNT(*) AS cptwithgreaterthanhundredunits
 #### Output
 -- 29
 
-### Find the physician specialty that has received the highest amount of payments. Then show the payments by month for this group of physicians. 
+### 7. Find the physician specialty that has received the highest amount of payments. Then show the payments by month for this group of physicians. 
 #### Query
 SELECT providerspecialty, monthperiod, monthyear,  -SUM(payment) AS payments
 <br>FROM facttable
@@ -76,7 +76,7 @@ SELECT providerspecialty, monthperiod, monthyear,  -SUM(payment) AS payments
 #### Output
 <img src="physspec.png" alt="physcianspecialty" style="width:350px;height:228px;">
 
-### How many Cpt Units by DiagnosisCodeGroup are assigned to a "J code" diagnosis? 
+### 8. How many Cpt Units by DiagnosisCodeGroup are assigned to a "J code" diagnosis? 
 #### Query
 SELECT diagnosiscodegroup, SUM(cptunits) as totalunits
 <br>FROM facttable
@@ -88,7 +88,7 @@ SELECT diagnosiscodegroup, SUM(cptunits) as totalunits
 #### Output
 <img src="jdiagnosis.png" alt="jdiagnosis" style="width:350px;height:228px;">
 
-### You've been asked to put together a report that details patient demographics. The report should group patients into three buckets - under 18, between 18-65, and over 65. 
+### 9. You've been asked to put together a report that details patient demographics. The report should group patients into three buckets - under 18, between 18-65, and over 65. 
 #### Query
 SELECT firstname || ' ' || lastname AS Name, email, patientage,
 <br> CASE 

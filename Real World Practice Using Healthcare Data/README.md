@@ -100,7 +100,7 @@ SELECT firstname || ' ' || lastname AS Name, email, patientage,
 <br> city || ' ' || state AS Cityandstate
 <br> FROM dimpatient;
 #### Output
-<img src="samplepatientdemographic.png" alt="ptdemo" style="width:350px;height:228px;">
+<img src="samplepatientdemographic.png" alt="ptdemo" style="width:350px;height:350px;">
 
 ### How many dollars have been written off (adjustments) due to credentialing (adjustment reason)? Which location has the highest number of credentialing adjustments? How many physicians at this location have been impacted by credentialing adjustments? What does this mean?
 

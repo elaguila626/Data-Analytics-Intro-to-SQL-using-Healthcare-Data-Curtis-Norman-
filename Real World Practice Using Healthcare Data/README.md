@@ -140,4 +140,36 @@ GROUP BY payername, cptcode, cptdesc
 ORDER BY cptunits;
 
 ### Find the NetCharge (Gross Charges - Contractual Adjustments). Calculate the Net Collection Rate (Payments/Netcharge) for each speciality. Which a has the worst NCR w/ a NC greater than $25,000?
-
+SELECT providerspecialty, 
+	grosscharges, 
+	contractualadjustment, 
+	netcharge, 
+	payments, 
+	adjustments - contractualadjustment AS adjustments,
+	ROUND(100*(-payments/netcharge)) AS netcollectionrate, 
+	AR,
+	ROUND(100*(AR/netcharge)) AS percentinAR,
+	ROUND(-100*(adjustments - contractualadjustment)/netcharge) AS writeoffpercent
+FROM
+	(SELECT providerspecialty,
+	SUM (grosscharge) AS grosscharges, 
+	SUM(CASE 
+		WHEN adjustmentreason = 'Contractual' THEN adjustment
+		ELSE Null
+		END) AS contractualadjustment,
+	(SUM(grosscharge) + SUM(CASE 
+		WHEN adjustmentreason = 'Contractual' THEN adjustment
+		ELSE Null
+		END)) AS netcharge,
+		SUM (payment) AS payments,
+		SUM (adjustment) AS adjustments, 
+		SUM (ar) AS AR
+	FROM facttable
+	INNER JOIN dimphysician
+	ON dimphysician.dimphysicianpk = facttable.dimphysicianpk
+	INNER JOIN dimtransaction
+	ON dimtransaction.dimtransactionpk = facttable.dimtransactionpk
+	GROUP BY providerspecialty) A
+WHERE
+	netcharge > 25000
+ORDER BY netcollectionrate;

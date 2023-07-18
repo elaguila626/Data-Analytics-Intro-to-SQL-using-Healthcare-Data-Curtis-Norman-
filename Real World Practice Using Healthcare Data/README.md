@@ -47,11 +47,10 @@ SELECT locationname, 100 *(-SUM(payment)/ sum(grosscharge)) AS GCR_Percent
 <br> GROUP BY  locationname
 <br> ORDER BY 2 DESC;
 #### Output
-<img src="gcrpercent.png" alt="countcpt" style="width:300px;height:228px;">
+<img src="gcrpercent.png" alt="gcrperc" style="width:300px;height:228px;">
 
 ### How many CptCodes have more than 100 units?
--- Answer: 29 
-
+#### Query
 SELECT COUNT(*) AS cptwithgreaterthanhundredunits
 <br> FROM(
 <br>	SELECT cptcode, SUM(cptunits)
@@ -60,8 +59,11 @@ SELECT COUNT(*) AS cptwithgreaterthanhundredunits
 <br>	ON dimcptcode.dimcptcodepk = facttable.dimcptcodepk
 <br>	GROUP BY cptcode
 <br>	HAVING SUM(cptunits) > 100) AS a; 
+#### Output
+-- 29
 
 ### Find the physician specialty that has received the highest amount of payments. Then show the payments by month for this group of physicians. 
+#### Query
 SELECT providerspecialty, monthperiod, monthyear,  -SUM(payment) AS payments
 <br>FROM facttable
 <br>INNER JOIN dimdate
@@ -71,11 +73,11 @@ SELECT providerspecialty, monthperiod, monthyear,  -SUM(payment) AS payments
 <br>WHERE providerspecialty = 'Internal Medicine'
 <br>GROUP BY providerspecialty, monthperiod, monthyear
 <br>ORDER BY monthperiod;
-
+#### Output
 <img src="physspec.png" alt="physcianspecialty" style="width:350px;height:228px;">
 
 ### How many Cpt Units by DiagnosisCodeGroup are assigned to a "J code" diagnosis? 
-
+#### Query
 SELECT diagnosiscodegroup, SUM(cptunits) as totalunits
 <br>FROM facttable
 <br>INNER JOIN dimdiagnosiscode
@@ -83,12 +85,11 @@ SELECT diagnosiscodegroup, SUM(cptunits) as totalunits
 <br>WHERE diagnosiscode ILIKE '%j%'
 <br>GROUP BY diagnosiscodegroup
 <br>ORDER BY totalunits;
-
+#### Output
 <img src="jdiagnosis.png" alt="jdiagnosis" style="width:350px;height:228px;">
 
-
 ### You've been asked to put together a report that details patient demographics. The report should group patients into three buckets - under 18, between 18-65, and over 65. 
-
+#### Query
 SELECT firstname || ' ' || lastname AS Name, email, patientage,
 <br> CASE 
 <br> WHEN (patientage < 18) THEN '< 18'
@@ -98,6 +99,8 @@ SELECT firstname || ' ' || lastname AS Name, email, patientage,
 <br> END AS Patientagebucket,
 <br> city || ' ' || state AS Cityandstate
 <br> FROM dimpatient;
+#### Output
+<img src="samplepatientdemographic.png" alt="ptdemo" style="width:350px;height:228px;">
 
 ### How many dollars have been written off (adjustments) due to credentialing (adjustment reason)? Which location has the highest number of credentialing adjustments? How many physicians at this location have been impacted by credentialing adjustments? What does this mean?
 

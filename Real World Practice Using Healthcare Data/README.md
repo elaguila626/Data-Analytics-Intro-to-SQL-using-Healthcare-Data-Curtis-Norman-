@@ -1,25 +1,28 @@
 # Healthcare Data SQL Practice Questions 
 
 ### How many rows of data are in the FactTable that include a Gross Charge greater than $100? 
--- Answer: 5513
-
+#### Query
 SELECT count(grosscharge) AS CountOfRows 
 <br>FROM facttable
 <br>WHERE grosscharge > 100.00;
+#### Result
+5513
 
 ### How many unique patients exist in the Healthcare_DB?
--- Answer: 4962
-
+#### Query
 SELECT COUNT(DISTINCT(patientnumber)) AS NumberOfUniquePatients 
 <br>FROM dimpatient;
+#### Result
+4962
 
 ### How many CptCodes are in each CptGrouping?
--- Answer: Unique number of CPT codes per department
-
+#### Query
 SELECT cptgrouping, COUNT(DISTINCT(cptcode)) AS CountOfCptCodes
 <br> FROM dimcptcode
 <br> GROUP BY cptgrouping
 <br> ORDER BY 2 DESC;
+
+#### Result
 
 ### How many providers have submitted a Medicare insurance claims?
 -- Answer: 682

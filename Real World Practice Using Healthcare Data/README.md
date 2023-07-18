@@ -64,6 +64,8 @@ SELECT providerspecialty, monthperiod, monthyear,  -SUM(payment) AS payments
 <br>GROUP BY providerspecialty, monthperiod, monthyear
 <br>ORDER BY monthperiod;
 
+<img src="physspec.png" alt="physcianspecialty" style="width:350px;height:228px;">
+
 ### How many Cpt Units by DiagnosisCodeGroup are assigned to a "J code" diagnosis? 
 
 SELECT diagnosiscodegroup, SUM(cptunits) as totalunits
@@ -74,7 +76,7 @@ SELECT diagnosiscodegroup, SUM(cptunits) as totalunits
 <br>GROUP BY diagnosiscodegroup
 <br>ORDER BY totalunits;
 
-<img src="jdiagnosis.png" alt="jdiagnosis" style="width:304px;height:228px;">
+<img src="jdiagnosis.png" alt="jdiagnosis" style="width:350px;height:228px;">
 
 
 ### You've been asked to put together a report that details patient demographics. The report should group patients into three buckets - under 18, between 18-65, and over 65. 

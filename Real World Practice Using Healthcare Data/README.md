@@ -5,15 +5,15 @@
 SELECT count(grosscharge) AS CountOfRows 
 <br>FROM facttable
 <br>WHERE grosscharge > 100.00;
-#### Result
-5513
+#### Output
+-- 5513
 
 ### How many unique patients exist in the Healthcare_DB?
 #### Query
 SELECT COUNT(DISTINCT(patientnumber)) AS NumberOfUniquePatients 
 <br>FROM dimpatient;
-#### Result
-4962
+#### Output
+-- 4962
 
 ### How many CptCodes are in each CptGrouping?
 #### Query
@@ -22,11 +22,11 @@ SELECT cptgrouping, COUNT(DISTINCT(cptcode)) AS CountOfCptCodes
 <br> GROUP BY cptgrouping
 <br> ORDER BY 2 DESC;
 
-#### Result
+#### Output
 <img src="countofcptcodes.png" alt="countcpt" style="width:300px;height:228px;">
-### How many providers have submitted a Medicare insurance claims?
--- Answer: 682
 
+### How many providers have submitted a Medicare insurance claims?
+#### Query
 SELECT COUNT(DISTINCT(providernpi)) AS countofproviders
 <br>FROM facttable 
 <br>INNER JOIN dimphysician
@@ -35,14 +35,19 @@ SELECT COUNT(DISTINCT(providernpi)) AS countofproviders
 <br>ON dimpayer.dimpayerpk = facttable.dimpayerpk
 <br>WHERE payername = 'Medicare';
 
-### Calculate the gross collection rate for each location name - see below; GCR = payments divided gross charge. Which locationname has the highest GCR? 
+#### Output
+-- 682
 
+### Calculate the gross collection rate for each location name - see below; GCR = payments divided gross charge. Which locationname has the highest GCR? 
+#### Query
 SELECT locationname, 100 *(-SUM(payment)/ sum(grosscharge)) AS GCR_Percent
 <br> FROM facttable
 <br> INNER JOIN dimlocation
 <br> ON dimlocation.dimlocationpk = facttable.dimlocationpk
 <br> GROUP BY  locationname
 <br> ORDER BY 2 DESC;
+#### Output
+<img src="gcrpercent.png" alt="countcpt" style="width:300px;height:228px;">
 
 ### How many CptCodes have more than 100 units?
 -- Answer: 29 

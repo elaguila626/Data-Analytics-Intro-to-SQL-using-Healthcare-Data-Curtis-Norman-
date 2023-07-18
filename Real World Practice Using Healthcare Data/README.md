@@ -139,3 +139,5 @@ WHERE cptdesc ILIKE '%initial%hospital%care%'
 GROUP BY payername, cptcode, cptdesc
 ORDER BY cptunits;
 
+### Find the NetCharge (Gross Charges - Contractual Adjustments). Calculate the Net Collection Rate (Payments/Netcharge) for each speciality. Which a has the worst NCR w/ a NC greater than $25,000?
+

@@ -23,7 +23,7 @@ SELECT cptgrouping, COUNT(DISTINCT(cptcode)) AS CountOfCptCodes
 <br> ORDER BY 2 DESC;
 
 #### Result
-
+<img src="countofcptcodes.png" alt="countcpt" style="width:300px;height:228px;">
 ### How many providers have submitted a Medicare insurance claims?
 -- Answer: 682
 

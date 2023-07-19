@@ -181,28 +181,28 @@ SELECT providerspecialty,
 <br>	ROUND(100*(AR/netcharge)) AS percentinAR,
 <br>	ROUND(-100*(adjustments - contractualadjustment)/netcharge) AS writeoffpercent
 <br>FROM
-<br>	(SELECT providerspecialty,
-<br>	SUM (grosscharge) AS grosscharges, 
-<br>	SUM(CASE 
-<br>	WHEN adjustmentreason = 'Contractual' THEN adjustment
-<br>	ELSE Null
-<br>	END) AS contractualadjustment,
-<br>	(SUM(grosscharge) + SUM(CASE 
-<br>	WHEN adjustmentreason = 'Contractual' THEN adjustment
-<br>	ELSE Null
-<br>	END)) AS netcharge,
-<br>	SUM (payment) AS payments,
-<br>	SUM (adjustment) AS adjustments, 
-<br>	SUM (ar) AS AR
-<br>	FROM facttable
-<br>	INNER JOIN dimphysician
-<br>	ON dimphysician.dimphysicianpk = facttable.dimphysicianpk
-<br>	INNER JOIN dimtransaction
-<br>	ON dimtransaction.dimtransactionpk = facttable.dimtransactionpk
-<br>	GROUP BY providerspecialty) A
+<br> &nbsp;(SELECT providerspecialty,
+<br> &nbsp; SUM (grosscharge) AS grosscharges, 
+<br> &nbsp;	SUM(CASE 
+<br> &nbsp;	WHEN adjustmentreason = 'Contractual' THEN adjustment
+<br> &nbsp;	ELSE Null
+<br> &nbsp;	END) AS contractualadjustment,
+<br> &nbsp; (SUM(grosscharge) + SUM(CASE 
+<br> &nbsp;	WHEN adjustmentreason = 'Contractual' THEN adjustment
+<br> &nbsp; ELSE Null
+<br> &nbsp; END)) AS netcharge,
+<br> &nbsp; SUM (payment) AS payments,
+<br> &nbsp;	SUM (adjustment) AS adjustments, 
+<br> &nbsp;	SUM (ar) AS AR
+<br> &nbsp;	FROM facttable
+<br> &nbsp;	INNER JOIN dimphysician
+<br> &nbsp;	ON dimphysician.dimphysicianpk = facttable.dimphysicianpk
+<br> &nbsp;	INNER JOIN dimtransaction
+<br> &nbsp;	ON dimtransaction.dimtransactionpk = facttable.dimtransactionpk
+<br> &nbsp;	GROUP BY providerspecialty) A
 <br>WHERE
-<br>	netcharge > 25000
-<br>ORDER BY netcollectionrate;
+<br>&nbsp;netcharge > 25000
+<br>&nbsp;ORDER BY netcollectionrate;
 
 #### Output
-<img src="paymentpername.png" alt="paymentpername" style="width:400px;height:300px;">
+<img src= "netchargenetcollectionrate.png" alt="netchargenetcollectionrate" style="width:400px;height:300px;">

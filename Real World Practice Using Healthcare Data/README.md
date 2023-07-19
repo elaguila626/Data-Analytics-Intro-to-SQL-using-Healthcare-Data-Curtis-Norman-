@@ -136,7 +136,7 @@ SELECT patientgender, COUNT(DISTINCT(dimpatient.patientnumber)) AS totalpatients
 #### Output
 <img src="type2patients.png" alt="type2patients" style="width:300px;height:75px;">
 
-### There are a two visit types that you have been asked to compare (use CptDesc).  Office outpateint visit  est vs new. Show each Cpt Code, Cpt desc, and the associated Cpt units. What is the charge per Cpt Units? What does this mean?
+### 12. There are a two visit types that you have been asked to compare (use CptDesc).  Office outpateint visit  est vs new. Show each Cpt Code, Cpt desc, and the associated Cpt units. What is the charge per Cpt Units? What does this mean?
 
 SELECT cptcode, cptdesc AS cptoutpatient, 
 <br>SUM(cptunits) AS cptunits, ROUND(SUM(grosscharge)/SUM(cptunits),2) AS chargeperunit
@@ -146,6 +146,9 @@ SELECT cptcode, cptdesc AS cptoutpatient,
 <br>WHERE cptdesc ILIKE '%outpatient%est%' OR cptdesc ILIKE '%outpatient%new%'
 <br>GROUP BY cptcode, cptdesc
 <br>ORDER BY cptunits;
+
+<img src="chargepercptunit.png" alt="chargepercptunit" style="width:350px;height:300px;">
+
 
 ### Analyze paymentperunit by payername. Complete this analysis by the following visit type (CptDesc) Initial Hospital Care. 
 SELECT payername, cptcode, cptdesc AS cptoutpatient, 

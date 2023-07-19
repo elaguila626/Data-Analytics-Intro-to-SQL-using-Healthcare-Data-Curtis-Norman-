@@ -168,36 +168,41 @@ SELECT payername, cptcode, cptdesc AS cptoutpatient,
 
 
 ### Find the NetCharge (Gross Charges - Contractual Adjustments). Calculate the Net Collection Rate (Payments/Netcharge) for each speciality. Which a has the worst NCR w/ a NC greater than $25,000?
+
+#### Query
 SELECT providerspecialty, 
-	grosscharges, 
-	contractualadjustment, 
-	netcharge, 
-	payments, 
-	adjustments - contractualadjustment AS adjustments,
-	ROUND(100*(-payments/netcharge)) AS netcollectionrate, 
-	AR,
-	ROUND(100*(AR/netcharge)) AS percentinAR,
-	ROUND(-100*(adjustments - contractualadjustment)/netcharge) AS writeoffpercent
+<br>grosscharges, 
+<br>ontractualadjustment, 
+<br>	netcharge, 
+<br>	payments, 
+<br>	adjustments - contractualadjustment AS adjustments,
+<br>	ROUND(100*(-payments/netcharge)) AS netcollectionrate, 
+<br>	AR,
+<br>	ROUND(100*(AR/netcharge)) AS percentinAR,
+<br>	ROUND(-100*(adjustments - contractualadjustment)/netcharge) AS writeoffpercent
 FROM
-	(SELECT providerspecialty,
-	SUM (grosscharge) AS grosscharges, 
-	SUM(CASE 
-		WHEN adjustmentreason = 'Contractual' THEN adjustment
-		ELSE Null
-		END) AS contractualadjustment,
-	(SUM(grosscharge) + SUM(CASE 
-		WHEN adjustmentreason = 'Contractual' THEN adjustment
-		ELSE Null
-		END)) AS netcharge,
-		SUM (payment) AS payments,
-		SUM (adjustment) AS adjustments, 
-		SUM (ar) AS AR
-	FROM facttable
-	INNER JOIN dimphysician
-	ON dimphysician.dimphysicianpk = facttable.dimphysicianpk
-	INNER JOIN dimtransaction
-	ON dimtransaction.dimtransactionpk = facttable.dimtransactionpk
-	GROUP BY providerspecialty) A
+<br>	(SELECT providerspecialty,
+<br>	SUM (grosscharge) AS grosscharges, 
+<br>	SUM(CASE 
+<br><br>	WHEN adjustmentreason = 'Contractual' THEN adjustment
+<br><br>	ELSE Null
+<br><br>	END) AS contractualadjustment,
+<br>	(SUM(grosscharge) + SUM(CASE 
+<br><br>	WHEN adjustmentreason = 'Contractual' THEN adjustment
+<br><br>	ELSE Null
+<br><br>	END)) AS netcharge,
+<br><br>	SUM (payment) AS payments,
+<br><br>	SUM (adjustment) AS adjustments, 
+<br><br>	SUM (ar) AS AR
+<br>	FROM facttable
+<br>	INNER JOIN dimphysician
+<br>	ON dimphysician.dimphysicianpk = facttable.dimphysicianpk
+<br>	INNER JOIN dimtransaction
+<br>	ON dimtransaction.dimtransactionpk = facttable.dimtransactionpk
+<br>	GROUP BY providerspecialty) A
 WHERE
-	netcharge > 25000
+<br>	netcharge > 25000
 ORDER BY netcollectionrate;
+
+#### Output
+<img src="paymentpername.png" alt="paymentpername" style="width:400px;height:300px;">

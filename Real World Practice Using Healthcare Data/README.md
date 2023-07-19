@@ -205,4 +205,4 @@ SELECT providerspecialty,
 <br>&nbsp;ORDER BY netcollectionrate;
 
 #### Output
-<img src= "netchargenetcollectionrate.png" alt="netchargenetcollectionrate" style="width:400px;height:300px;">
+<img src= "netchargenetcollectionrate.png" alt="netchargenetcollectionrate" style="width:975px;height:300px;">

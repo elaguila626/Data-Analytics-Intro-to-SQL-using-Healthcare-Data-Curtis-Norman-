@@ -134,7 +134,7 @@ SELECT patientgender, COUNT(DISTINCT(dimpatient.patientnumber)) AS totalpatients
 <br>locationname ILIKE '%Big Heart Community Hospital%'
 <br>GROUP BY patientgender;
 #### Output
-<img src="type2patients.png" alt="type2patients" style="width:350px;height:300px;">
+<img src="type2patients.png" alt="type2patients" style="width:100px;height:100px;">
 
 ### There are a two visit types that you have been asked to compare (use CptDesc).  Office outpateint visit  est vs new. Show each Cpt Code, Cpt desc, and the associated Cpt units. What is the charge per Cpt Units? What does this mean?
 

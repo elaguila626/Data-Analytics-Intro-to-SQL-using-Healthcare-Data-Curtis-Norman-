@@ -180,29 +180,29 @@ SELECT providerspecialty,
 <br>	AR,
 <br>	ROUND(100*(AR/netcharge)) AS percentinAR,
 <br>	ROUND(-100*(adjustments - contractualadjustment)/netcharge) AS writeoffpercent
-FROM
+<br>FROM
 <br>	(SELECT providerspecialty,
 <br>	SUM (grosscharge) AS grosscharges, 
 <br>	SUM(CASE 
-<br><br>	WHEN adjustmentreason = 'Contractual' THEN adjustment
-<br><br>	ELSE Null
-<br><br>	END) AS contractualadjustment,
+<br>	WHEN adjustmentreason = 'Contractual' THEN adjustment
+<br>	ELSE Null
+<br>	END) AS contractualadjustment,
 <br>	(SUM(grosscharge) + SUM(CASE 
-<br><br>	WHEN adjustmentreason = 'Contractual' THEN adjustment
-<br><br>	ELSE Null
-<br><br>	END)) AS netcharge,
-<br><br>	SUM (payment) AS payments,
-<br><br>	SUM (adjustment) AS adjustments, 
-<br><br>	SUM (ar) AS AR
+<br>	WHEN adjustmentreason = 'Contractual' THEN adjustment
+<br>	ELSE Null
+<br>	END)) AS netcharge,
+<br>	SUM (payment) AS payments,
+<br>	SUM (adjustment) AS adjustments, 
+<br>	SUM (ar) AS AR
 <br>	FROM facttable
 <br>	INNER JOIN dimphysician
 <br>	ON dimphysician.dimphysicianpk = facttable.dimphysicianpk
 <br>	INNER JOIN dimtransaction
 <br>	ON dimtransaction.dimtransactionpk = facttable.dimtransactionpk
 <br>	GROUP BY providerspecialty) A
-WHERE
+<br>WHERE
 <br>	netcharge > 25000
-ORDER BY netcollectionrate;
+<br>ORDER BY netcollectionrate;
 
 #### Output
 <img src="paymentpername.png" alt="paymentpername" style="width:400px;height:300px;">

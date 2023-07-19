@@ -150,18 +150,22 @@ SELECT cptcode, cptdesc AS cptoutpatient,
 <img src="chargepercptunit.png" alt="chargepercptunit" style="width:400px;height:300px;">
 
 
-### 12.Analyze paymentperunit by payername. Complete this analysis by the following visit type (CptDesc) Initial Hospital Care. 
+### 13.Analyze paymentperunit by payername. Complete this analysis by the following visit type (CptDesc) Initial Hospital Care. 
 
+#### Query
 SELECT payername, cptcode, cptdesc AS cptoutpatient, 
-SUM(cptunits) AS cptunits, ROUND(-SUM(payment)/NULLIF(SUM(cptunits),0),2) AS paymentperunit
-FROM facttable
-INNER JOIN dimcptcode
-ON dimcptcode.dimcptcodepk = facttable.dimcptcodepk
-INNER JOIN dimpayer
-ON dimpayer.dimpayerpk = facttable.dimpayerpk
-WHERE cptdesc ILIKE '%initial%hospital%care%'
-GROUP BY payername, cptcode, cptdesc
-ORDER BY cptunits;
+<br>SUM(cptunits) AS cptunits, ROUND(-SUM(payment)/NULLIF(SUM(cptunits),0),2) AS paymentperunit
+<br>FROM facttable
+<br>INNER JOIN dimcptcode
+<br>ON dimcptcode.dimcptcodepk = facttable.dimcptcodepk
+<br>INNER JOIN dimpayer
+<br>ON dimpayer.dimpayerpk = facttable.dimpayerpk
+<br>WHERE cptdesc ILIKE '%initial%hospital%care%'
+<br>GROUP BY payername, cptcode, cptdesc
+<br>ORDER BY cptunits;
+#### Output
+<img src="paymentpername.png" alt="paymentpername" style="width:400px;height:300px;">
+
 
 ### Find the NetCharge (Gross Charges - Contractual Adjustments). Calculate the Net Collection Rate (Payments/Netcharge) for each speciality. Which a has the worst NCR w/ a NC greater than $25,000?
 SELECT providerspecialty, 

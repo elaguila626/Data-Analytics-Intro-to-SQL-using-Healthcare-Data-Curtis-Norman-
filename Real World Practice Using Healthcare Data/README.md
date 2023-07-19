@@ -118,20 +118,23 @@ SELECT locationname, COUNT(DISTINCT(providernpi)) AS physiciansimpacted, - SUM(a
 <img src="adjustments.png" alt="adjustments" style="width:350px;height:300px;">
 -- What does this mean? Based on the data there are a total of 30 physicians at 'Anglestone Community Hospital' who are not credentialed and allowing a total of $2106.79 to be written off. 
 
-### What is the average patientage by gender for patients seen at Big Heart Community Hospital with a Diagnosis that included Type 2 Diabetes? And how many patients are included in that average? 
+### 11. What is the average patientage by gender for patients seen at Big Heart Community Hospital with a Diagnosis that included Type 2 Diabetes? And how many patients are included in that average? 
 
+#### Query
 SELECT patientgender, COUNT(DISTINCT(dimpatient.patientnumber)) AS totalpatients, 
-<br> AVG(patientage) AS avgpatientage
-<br>FROM facttable
+<br> ROUND(AVG(patientage),2) AS avgpatientage
+<br> FROM facttable
 <br>INNER JOIN dimlocation
 <br>ON dimlocation.dimlocationpk = facttable.dimlocationpk
 <br>INNER JOIN dimpatient
-<br>ON dimpatient.dimpatientpk = facttable.impatient
+<br>ON dimpatient.dimpatientpk = facttable.dimpatientpk
 <br>INNER JOIN dimdiagnosiscode
 <br>ON dimdiagnosiscode.dimdiagnosiscodepk = facttable.dimdiagnosiscodepk
 <br>WHERE diagnosiscodedescription ILIKE '%type 2%' AND
 <br>locationname ILIKE '%Big Heart Community Hospital%'
 <br>GROUP BY patientgender;
+#### Output
+<img src="type2patients.png" alt="type2patients" style="width:350px;height:300px;">
 
 ### There are a two visit types that you have been asked to compare (use CptDesc).  Office outpateint visit  est vs new. Show each Cpt Code, Cpt desc, and the associated Cpt units. What is the charge per Cpt Units? What does this mean?
 

@@ -147,7 +147,7 @@ SELECT cptcode, cptdesc AS cptoutpatient,
 <br>GROUP BY cptcode, cptdesc
 <br>ORDER BY cptunits;
 
-<img src="chargepercptunit.png" alt="chargepercptunit" style="width:350px;height:300px;">
+<img src="chargepercptunit.png" alt="chargepercptunit" style="width:400px;height:300px;">
 
 
 ### Analyze paymentperunit by payername. Complete this analysis by the following visit type (CptDesc) Initial Hospital Care. 

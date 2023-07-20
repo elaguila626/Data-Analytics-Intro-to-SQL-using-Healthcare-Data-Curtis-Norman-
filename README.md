@@ -1,2 +1,2 @@
 # Curtis-Norman-Data-Analytics-Intro-to-SQL-using-Healthcare-Data
-Curtis Norman Data Analytics: Intro to SQL using Healthcare Data. I didn't have access to a Microsoft computer, therefore I extrapolated the excel data to PostgreSQL.  
+After finishing Jose Portillo's Udemy Course: "The Complete SQL Bootcamp: Go from Zero to Hero" and given my history of working within the healthcare field. I pursued a course that combined SQL and healthcare data. In this repository, you'll find practice questions from Curtis Norman's "Data Analytics: Intro to SQL using Healthcare Data". 

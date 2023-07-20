@@ -74,7 +74,7 @@ SELECT providerspecialty, monthperiod, monthyear,  -SUM(payment) AS payments
 <br>GROUP BY providerspecialty, monthperiod, monthyear
 <br>ORDER BY monthperiod;
 #### Output
-<img src="physspec.png" alt="physcianspecialty" style="width:350px;height:228px;">
+<img src="physspec.png" alt="physcianspecialty" style="width:400px;height:228px;">
 
 ### 8. How many Cpt Units by DiagnosisCodeGroup are assigned to a "J code" diagnosis? 
 #### Query

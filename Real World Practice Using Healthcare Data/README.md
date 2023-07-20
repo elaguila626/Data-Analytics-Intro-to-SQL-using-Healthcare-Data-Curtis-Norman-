@@ -100,7 +100,7 @@ SELECT firstname || ' ' || lastname AS Name, email, patientage,
 <br> city || ' ' || state AS Cityandstate
 <br> FROM dimpatient;
 #### Output
-<img src="samplepatientdemographic.png" alt="ptdemo" style="width:350px;height:350px;">
+<img src="samplepatientdemographic.png" alt="ptdemo" style="width:500px;height:350px;">
 
 ### 10. How many dollars have been written off (adjustments) due to credentialing (adjustment reason)? Which location has the highest number of credentialing adjustments? How many physicians at this location have been impacted by credentialing adjustments? What does this mean?
 #### Query
@@ -164,7 +164,7 @@ SELECT payername, cptcode, cptdesc AS cptoutpatient,
 <br>GROUP BY payername, cptcode, cptdesc
 <br>ORDER BY cptunits;
 #### Output
-<img src="paymentpername.png" alt="paymentpername" style="width:400px;height:300px;">
+<img src="paymentpername.png" alt="paymentpername" style="width:500px;height:300px;">
 
 
 ### Find the NetCharge (Gross Charges - Contractual Adjustments). Calculate the Net Collection Rate (Payments/Netcharge) for each speciality. Which a has the worst NCR w/ a NC greater than $25,000?

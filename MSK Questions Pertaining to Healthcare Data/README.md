@@ -13,5 +13,5 @@ SELECT firstname,lastname,diagnosiscodedescription,
 <br> GROUP BY firstname,lastname,diagnosiscodedescription
 <br> ORDER BY numberofvisits DESC;
 #### Output
-<img src="MSKpatients.png" alt="MSKpatients" style="width:400px;height:228px;">
+<img src="MSKpatients.png" alt="MSKpatients" style="width:600px;height:300px;">
 

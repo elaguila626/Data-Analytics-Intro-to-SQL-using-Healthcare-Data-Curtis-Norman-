@@ -1,5 +1,14 @@
 ## The following queries and questions related to musculoskeletal (MSK) healthcare data were executed for additional practice and a step to a larger personalized project. 
 
+###  How many patients are there within each hospital between 2019-2020?
+#### Query
+SELECT locationname, COUNT(DISTINCT(dimpatient)) FROM facttable
+<br>INNER JOIN dimpatient
+<br>ON facttable.dimpatientpk = dimpatient.dimpatientpk
+<br>INNER JOIN dimlocation
+<br>ON dimlocation.dimlocationpk = facttable.dimlocationpk
+<br>GROUP BY locationname; 
+
 ###  What are the MSK -related diagnosis descriptions? Who were the patients that presented with MSK related issues? How many visits occurred related to this issue? 
 #### Query
 SELECT firstname,lastname,diagnosiscodedescription, 

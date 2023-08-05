@@ -9,6 +9,12 @@ SELECT locationname, COUNT(DISTINCT(dimpatient)) FROM facttable
 <br>ON dimlocation.dimlocationpk = facttable.dimlocationpk
 <br>GROUP BY locationname; 
 
+#### SQL Output
+
+
+#### Personal Tableau Example
+
+
 ###  What are the MSK -related diagnosis descriptions? Who were the patients that presented with MSK related issues? How many visits occurred related to this issue? 
 #### Query
 SELECT firstname,lastname,diagnosiscodedescription, 

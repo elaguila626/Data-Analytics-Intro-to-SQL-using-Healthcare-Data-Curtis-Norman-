@@ -1,15 +1,22 @@
 ## The following queries and questions related to musculoskeletal (MSK) healthcare data were executed for additional practice and are a step toward a larger personalized project. Each query has a sample SQL output and tableau dashboard presenting the data. 
 
-###  How many patients are there within each hospital between 2019-2020?
+###  How many patients are there per provider specialty within each hospital between 2019-2020? 
 #### Query
-SELECT locationname, COUNT(DISTINCT(dimpatient)) FROM facttable
-<br>INNER JOIN dimpatient
-<br>ON facttable.dimpatientpk = dimpatient.dimpatientpk
-<br>INNER JOIN dimlocation
-<br>ON dimlocation.dimlocationpk = facttable.dimlocationpk
-<br>GROUP BY locationname; 
+
+SELECT locationname, providerspecialty, COUNT(DISTINCT(dimpatient)) AS numofpatients 
+<br> FROM facttable
+<br> INNER JOIN dimpatient
+<br> ON facttable.dimpatientpk = dimpatient.dimpatientpk
+<br> INNER JOIN dimphysician
+<br> ON facttable.dimphysicianpk = dimphysician.dimphysicianpk
+<br> INNER JOIN dimlocation
+<br> ON dimlocation.dimlocationpk = facttable.dimlocationpk
+<br> GROUP BY locationname, providerspecialty
+<br> ORDER BY locationname;
 
 #### SQL Output
+
+![Numofptsperhospital specialty](https://github.com/elaguila626/Data-Analytics-Intro-to-SQL-using-Healthcare-Data-Curtis-Norman-/assets/100698925/f83b2c8c-1ea6-4c59-84c7-e859fb79351f)
 
 
 #### Personal Tableau Example
@@ -32,5 +39,5 @@ SELECT firstname,lastname,diagnosiscodedescription,
 <br>GROUP BY firstname,lastname,diagnosiscodedescription
 <br>ORDER BY numberofvisits DESC;
 #### Output
-<img src="MSKpatients.png" alt="MSKpatients" style="width:600px;height:300px;">
+
 

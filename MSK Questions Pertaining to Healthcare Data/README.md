@@ -19,11 +19,12 @@ SELECT locationname, providerspecialty, COUNT(DISTINCT(dimpatient)) AS numofpati
 ![Numofptsperhospital specialty](https://github.com/elaguila626/Data-Analytics-Intro-to-SQL-using-Healthcare-Data-Curtis-Norman-/assets/100698925/f83b2c8c-1ea6-4c59-84c7-e859fb79351f)
 
 
-#### Personal Tableau Example
+#### Tableau Demonstration
 
 https://github.com/elaguila626/Data-Analytics-Intro-to-SQL-using-Healthcare-Data-Curtis-Norman-/assets/100698925/5a260fc8-1a96-4fb5-af04-65407dc2a450
 
-###  What are the MSK -related diagnosis descriptions? Who were the patients that presented with MSK related issues? How many visits occurred related to this issue? 
+###  What are the MSK-related diagnosis descriptions? Who were the patients that presented with MSK-related issues? How many visits occurred related to this issue? 
+
 #### Query
 SELECT firstname,lastname,diagnosiscodedescription, 
 <br>COUNT(facttable.dimdateservicepk) AS numberofvisits
@@ -38,6 +39,8 @@ SELECT firstname,lastname,diagnosiscodedescription,
 <br>OR diagnosiscodedescription ILIKE '%sprain%'
 <br>GROUP BY firstname,lastname,diagnosiscodedescription
 <br>ORDER BY numberofvisits DESC;
-#### Output
 
+#### SQL Output
+
+#### Tableau Demonstration
 

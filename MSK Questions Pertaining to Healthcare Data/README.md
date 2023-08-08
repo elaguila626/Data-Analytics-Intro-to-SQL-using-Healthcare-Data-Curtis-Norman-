@@ -1,4 +1,4 @@
-## The following queries and questions related to musculoskeletal (MSK) healthcare data were executed for additional practice and a step to a larger personalized project. 
+## The following queries and questions related to musculoskeletal (MSK) healthcare data were executed for additional practice and a step to a larger personalized project. Each query has a sample SQL output and tableau dashboard presenting the data. 
 
 ###  How many patients are there within each hospital between 2019-2020?
 #### Query
@@ -14,11 +14,7 @@ SELECT locationname, COUNT(DISTINCT(dimpatient)) FROM facttable
 
 #### Personal Tableau Example
 
-
-
 https://github.com/elaguila626/Data-Analytics-Intro-to-SQL-using-Healthcare-Data-Curtis-Norman-/assets/100698925/5a260fc8-1a96-4fb5-af04-65407dc2a450
-
-
 
 ###  What are the MSK -related diagnosis descriptions? Who were the patients that presented with MSK related issues? How many visits occurred related to this issue? 
 #### Query

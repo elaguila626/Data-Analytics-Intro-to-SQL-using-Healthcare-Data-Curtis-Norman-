@@ -37,10 +37,13 @@ SELECT firstname,lastname,diagnosiscodedescription,
 <br>OR diagnosiscodedescription ILIKE '%fracture%'
 <br>OR diagnosiscodedescription ILIKE '%strain%'
 <br>OR diagnosiscodedescription ILIKE '%sprain%'
+<br>OR diagnosiscodedescription ILIKE '%tendon%'
 <br>GROUP BY firstname,lastname,diagnosiscodedescription
 <br>ORDER BY numberofvisits DESC;
 
 #### SQL Output
+
+![Pt'sCPTdiag numofvisits](https://github.com/elaguila626/Data-Analytics-Intro-to-SQL-using-Healthcare-Data-Curtis-Norman-/assets/100698925/0fd42b6d-273a-4f1b-ba33-3b31fd9af9a2)
 
 #### Tableau Demonstration
 

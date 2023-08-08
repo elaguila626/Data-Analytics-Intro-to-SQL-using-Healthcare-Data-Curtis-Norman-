@@ -15,6 +15,11 @@ SELECT locationname, COUNT(DISTINCT(dimpatient)) FROM facttable
 #### Personal Tableau Example
 
 
+
+https://github.com/elaguila626/Data-Analytics-Intro-to-SQL-using-Healthcare-Data-Curtis-Norman-/assets/100698925/5a260fc8-1a96-4fb5-af04-65407dc2a450
+
+
+
 ###  What are the MSK -related diagnosis descriptions? Who were the patients that presented with MSK related issues? How many visits occurred related to this issue? 
 #### Query
 SELECT firstname,lastname,diagnosiscodedescription, 

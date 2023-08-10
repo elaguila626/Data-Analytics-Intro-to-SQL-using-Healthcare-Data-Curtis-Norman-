@@ -47,3 +47,6 @@ SELECT firstname,lastname,diagnosiscodedescription,
 
 #### Tableau Demonstration
 
+https://github.com/elaguila626/Data-Analytics-Intro-to-SQL-using-Healthcare-Data-Curtis-Norman-/assets/100698925/f93b28b9-7e64-4c58-b7a4-eede649097bb
+
+

@@ -49,4 +49,20 @@ SELECT firstname,lastname,diagnosiscodedescription,
 
 https://github.com/elaguila626/Data-Analytics-Intro-to-SQL-using-Healthcare-Data-Curtis-Norman-/assets/100698925/f93b28b9-7e64-4c58-b7a4-eede649097bb
 
+###  Which Diagnosis Code/ICD-10 codes pertain to MSK injuries? Which ICD 10 codes are the most financially expensive?
 
+SELECT locationname, diagnosiscode, diagnosiscodedescription, SUM(grosscharge) as grosscharge
+<br>FROM facttable
+<br>INNER JOIN dimdiagnosiscode
+<br>ON dimdiagnosiscode.dimdiagnosiscodepk = facttable.dimdiagnosiscodepk
+<br>INNER JOIN dimtransaction
+<br>ON dimtransaction.dimtransactionpk = facttable.dimtransactionpk
+<br>INNER JOIN dimlocation
+<br>ON dimlocation.dimlocationpk = facttable.dimlocationpk
+<br>WHERE diagnosiscode ILIKE '%s%' AND transactiontype = 'Charge'
+<br>GROUP BY locationname, diagnosiscode, diagnosiscodedescription
+<br>ORDER BY locationname; 
+
+#### SQL Output
+
+![MSK ICD-10 Codes    GrossCharge](https://github.com/elaguila626/Data-Analytics-Intro-to-SQL-using-Healthcare-Data-Curtis-Norman-/assets/100698925/02f3ee48-7dd7-40e7-9b6f-bc28af840516)

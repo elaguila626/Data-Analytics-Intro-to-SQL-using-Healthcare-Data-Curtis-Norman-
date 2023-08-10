@@ -1,4 +1,4 @@
-## The following queries and questions related to musculoskeletal (MSK) healthcare data were executed for additional practice and are a step toward a larger personalized project. Each query has a sample SQL output and tableau dashboard presenting the data. 
+## The following queries and questions related to musculoskeletal (MSK) healthcare data were executed for additional practice and are a step toward a larger personalized project. Each query has a sample SQL output and tableau dashboard presenting data and further insight.
 
 ###  How many patients are there per provider specialty within each hospital between 2019-2020? 
 #### Query

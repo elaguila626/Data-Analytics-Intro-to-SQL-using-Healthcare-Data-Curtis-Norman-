@@ -66,3 +66,9 @@ SELECT locationname, diagnosiscode, diagnosiscodedescription, SUM(grosscharge) a
 #### SQL Output
 
 ![MSK ICD-10 Codes    GrossCharge](https://github.com/elaguila626/Data-Analytics-Intro-to-SQL-using-Healthcare-Data-Curtis-Norman-/assets/100698925/02f3ee48-7dd7-40e7-9b6f-bc28af840516)
+
+#### Tableau Demonstration
+
+https://github.com/elaguila626/Data-Analytics-Intro-to-SQL-using-Healthcare-Data-Curtis-Norman-/assets/100698925/e41b5c1a-ee6f-4967-af0c-e541ffbeb8dd
+
+
